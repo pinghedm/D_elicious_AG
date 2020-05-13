@@ -1,0 +1,129 @@
+time:
+  Total: 
+    -5 mins
+  Prep: 
+    - mins
+  Rise: 
+    -hrs 
+  Cook: 
+    - mins
+yield:
+  - 1 loaf
+
+ingredients:
+  challah:
+    - water: &water
+        name: water
+        amount: 1.25 cup
+    - yeast: &yeast
+        name: yeast
+        amount: 2.25 tsp
+    - sugar: &sugar
+        name: sugar
+        amount: 6 tbsp
+    - oil: &oil
+        name: oil
+        amount: .25 cup
+    - ap flour: &ap_flour
+        name: ap flour
+        amount: 4-4.5 cup
+    - salt: &salt
+        name: salt
+        amount: 2 tsp
+  glaze:
+    - maple syrup: &maple_syrup
+        name: maple syrup
+        amount: 1.5 tsp
+    - nondairy milk: &nondairy_milk
+        name: nondairy milk
+        amount: 1.5 tsp
+steps:
+  - name: Proof Yeast
+    step_dep: null
+    ing_dep:
+        - *water
+        - *sugar
+        - *yeast
+    do:
+      - Place warm water in bowl.
+      - Add pinch of sugar and yeast
+      - Wait 10 mins
+  - name: Prepare Dough
+    step_dep: Proof Yeast
+    ing_dep:
+      - *sugar
+      - *oil
+      - *ap_flour
+      - *salt
+    do:
+      - Add sugar, oil, 2 cups flour, salt
+      - mix until incorporated
+      - add flour 1 cup at a time, and mix until dough becomes a shaggy ball
+  - name: Knead
+    step_dep: Prepare Dough
+    ing_dep: null
+    do:
+      - knead dough until smooth and elastic (~5-10 minutes)
+  - name: Rest Dough
+    step_dep: Knead
+    ing_dep: 
+      - *oil
+    do:
+      - grease large bowl with some oil
+      - put dough in bowl, turning to coat with oil
+      - cover with damp towl, set in warm place
+  - name: Rest Dough 2
+    step_dep: Rest Dough
+    ing_dep: null
+    do:
+      - Wait 105 mins
+  - name: Prep Baking Sheet
+    step_dep: null
+    ing_dep: null
+    do:
+      - Line baking sheet with parchment paper
+  - name: Shape Dough
+    step_dep: 
+      - Rest Dough 2
+      - Prep Baking Sheet
+    ing_dep: null
+    do:
+      - Punch down dough
+      - Braid if desired
+      - Place on sheet
+  - name: Rest Dough 3
+    step_dep: Shape Dough
+    ing_dep: null
+    do:
+      - Wait 45 - 60 min
+  - name: Preheat Oven
+    step_dep: Shape Dough
+    ing_dep: null
+    do:
+      - Heat oven to 350 F
+  - name: Make Glaze
+    step_dep: null
+    ing_dep:
+      - *maple_syrup
+      - *nondairy_milk
+    do:
+      - Whisk together milk and syrup
+  - name: Glaze
+    step_dep:
+      - Make Glaze
+      - Rest Dough 3
+    ing_dep: null
+    do:
+      - Brush glaze over challah
+  - name: Bake
+    step_dep:
+      - Preheat Oven
+      - Glaze
+    ing_dep: null
+    do:
+      - Bake 20-30 minutes until challah is golden brown and hollow when knocked
+      - Cool on wire rack
+
+
+
+
