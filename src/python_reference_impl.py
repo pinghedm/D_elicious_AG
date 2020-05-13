@@ -92,7 +92,7 @@ for idx, step in enumerate(recipe_structure['steps']):
 		step_deps_by_step[step_slug] = set(step_dep_slugs)
 
 
-	if step_dep is None and ing_dep is None:
+	if step_dep is None:# and ing_dep is None:
 		root_node.children.append(do_nodes[0])
 
 
@@ -106,7 +106,10 @@ for step_slug, step_dep_slugs in step_deps_by_step.items():
 def walk(root, graph, edges):
 	for child in root.children:
 		child.produce_graph_node(graph)
-		edges.add((root.slug_name, child.slug_name))
+		if not (root.slug_name != 'start' or child.node_type != 'ingredient'):
+			pass
+		else:
+			edges.add((root.slug_name, child.slug_name))
 		edges = walk(child, graph, edges)
 	return edges
 
